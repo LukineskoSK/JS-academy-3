@@ -8,9 +8,10 @@ body{
 .container {
     width: 1024px;
     height: 600px;
-    position: absolute;
+    position: relative;
     background: #ffe9a5;
     overflow: hidden;
+    border-radius: 10px;
     
 }
 #ball {
