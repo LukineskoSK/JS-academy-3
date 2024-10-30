@@ -1,3 +1,4 @@
+// Premenné
 const ball = document.getElementById('ball');
 const gameBoard = document.querySelector('.container');
 const scoreElement = document.getElementById('score');
@@ -12,6 +13,7 @@ let position = {
     y: 0
 };
 
+// nastavenie pozicie lopty pred klesaním
 function resetPosition() {
     position.x = Math.random() * (gameBoard.offsetWidth - ball.offsetWidth);
     position.y = -ball.offsetHeight;
@@ -20,6 +22,9 @@ function resetPosition() {
     ball.style.top = position.y + 'px';
 }
 
+// pohyb lopty smerom dole
+// v prípade že lopta prejde pod spodok spustí f gameOver
+// ak je gameOver tak vlastne zastaví sa
 function moveBall() {
     if (isGameOver) return;
 
@@ -33,12 +38,13 @@ function moveBall() {
     requestAnimationFrame(moveBall);
 }
 
+// funkcia ktorá zobrazí gameover
 function gameOver(){
     isGameOver = true;
     gameOverElement.style.display = 'flex';
 }
 
-// klikanie na granát
+// klikanie na loptu a navyšovanie score
 ball.addEventListener('click', ()=> {
     if (!isGameOver)
     score += 1;
@@ -47,6 +53,7 @@ ball.addEventListener('click', ()=> {
     resetPosition();
 })
 
+// ak kliknem na newGame tak sa spustí hra od znova resetuje údaje
 newGameElement.addEventListener('click', ()=> {
     isGameOver = false;
     score = 0;
@@ -61,8 +68,6 @@ newGameElement.addEventListener('click', ()=> {
 //------------------------
 //-------Hlavný kód-------
 //------------------------
-
-
 
 resetPosition();
 moveBall();
